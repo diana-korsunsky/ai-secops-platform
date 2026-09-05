@@ -6,9 +6,18 @@ interface LoginFormData {
   password: string
 }
 
+interface LoginErrors {
+  email: string
+  password: string
+}
+
 function LoginPage() {
     const navigate = useNavigate()
     const [formData, setFormData] = useState<LoginFormData>({
+        email: '',
+        password: '',
+    })
+    const [errors, setErrors] = useState<LoginErrors>({
         email: '',
         password: '',
     })
@@ -16,28 +25,59 @@ function LoginPage() {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
+    
     setFormData((prev) => ({
       ...prev,
       [name]: value,
     }))
+
+    if (value){
+         setErrors((prev) => ({
+      ...prev,
+      [name]: "",
+    }))
+    }
+
+
   }
 
   const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault()
+    const newErrors: LoginErrors = {
+      email: '',
+      password: '',
+    }
+    if (!formData.email) {
+      newErrors.email = 'Email is required'
+    }
+    if (!formData.password) {
+      newErrors.password = 'Password is required'
+    }
+
+    setErrors(newErrors)
+
+    if (newErrors.email || newErrors.password) {
+        return
+    }
     navigate('/dashboard')
   
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center">
-      <div  className="w-full max-w-md rounded-xl p-8 shadow-lg">
-        <h1>AI Security Operations Platform</h1>
-        <h2>Login</h2>
+    <div className="flex flex-col min-h-screen ">
 
+        <h2 className=" text-4xl font-bold text-center pt-7">
+            AI Security Operations Platform
+            </h2>
 
-        <form onSubmit={handleSubmit}>
-          <div className="flex flex-col gap-2">
-            <label htmlFor="email">Email</label>
+        <div className="flex flex-1 items-center justify-center">
+          <div className="flex flex-col max-w-lg rounded-xl p-8 shadow-lg">
+      
+
+        <form onSubmit={handleSubmit} noValidate className="flex flex-col items-center gap-4">
+
+          <div className="flex text-2xl gap-2">
+            <label htmlFor="email">Email:</label>
             <input
               type="email"
               id="email"
@@ -45,12 +85,13 @@ function LoginPage() {
               value={formData.email}
               onChange={handleChange}
               placeholder="Enter your email"
-              required
             />
-          </div>
+            {errors.email && (<p>{errors.email}</p>)}
+             </div>
+          
 
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
+          <div className="flex text-2xl gap-2">
+            <label htmlFor="password">Password:</label>
             <input
               type="password"
               id="password"
@@ -58,20 +99,17 @@ function LoginPage() {
               value={formData.password}
               onChange={handleChange}
               placeholder="Enter your password"
-              required
             />
-          </div>
+         
+            {errors.password && (<p>{errors.password}</p>)}
+            </div>
+         
 
-          <button type="submit"  className="submit-btn">
-          </button>
+         <button type="submit"className="w-full text-2xl font-semibold rounded-lg px-4 py-2 pt-6" >Login </button>
 
         </form>
-
-        <div className="login-footer">
-          <a href="#forgot">Forgot password?</a>
-          <span>|</span>
-          <a href="#signup">Sign up</a>
-        </div>
+      </div>
+      
       </div>
     </div>
   )
