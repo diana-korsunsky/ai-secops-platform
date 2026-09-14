@@ -1,6 +1,8 @@
 function IncidentsPage() {
   return (
     <section>
+        <h1>Incidents Page</h1>
+
      
     </section>
   )

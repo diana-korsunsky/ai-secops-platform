@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import LoginPage from './pages/LoginPage'
-import DashboardLayout from './pages/DashboardLayoutPage'
+import DashboardLayout from './layouts/DashboardLayout'
 import DashboardPage from './pages/DashboardPage'
 import EventsPage from './pages/EventsPage'
 import IncidentsPage from './pages/IncidentsPage'
