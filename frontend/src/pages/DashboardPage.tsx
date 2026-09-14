@@ -1,11 +1,15 @@
 
 
 function DashboardPage() {
+
+
+
+
+
   return (
-    <div>
+    <section className="flex min-h-screen p-4">
       <h1>Dashboard</h1>
-      <p>Welcome to the AI Security Operations Platform Dashboard!</p>
-    </div>
+    </section>
   )
 }
 

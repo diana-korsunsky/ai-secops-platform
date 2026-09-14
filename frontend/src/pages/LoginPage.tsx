@@ -73,10 +73,11 @@ function LoginPage() {
         <div className="flex flex-1 items-center justify-center">
           <div className="flex flex-col max-w-lg rounded-xl p-8 shadow-lg">
       
+         <h2 className="text-4xl font-bold text-center pb-4"> Login</h2>
 
-        <form onSubmit={handleSubmit} noValidate className="flex flex-col items-center gap-4">
+        <form onSubmit={handleSubmit} noValidate className="flex flex-col items-center gap-2">
 
-          <div className="flex text-2xl gap-2">
+          <div className="flex gap-2">
             <label htmlFor="email">Email:</label>
             <input
               type="email"
@@ -90,8 +91,8 @@ function LoginPage() {
              </div>
           
 
-          <div className="flex text-2xl gap-2">
-            <label htmlFor="password">Password:</label>
+          <div className="flex gap-2">
+            <label htmlFor="password">Password</label>
             <input
               type="password"
               id="password"
@@ -105,7 +106,7 @@ function LoginPage() {
             </div>
          
 
-         <button type="submit"className="w-full text-2xl font-semibold rounded-lg px-4 py-2 pt-6" >Login </button>
+         <button type="submit"className="w-full rounded-lg px-4 py-2" >Login </button>
 
         </form>
       </div>
