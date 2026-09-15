@@ -1,1 +1,4 @@
 frontend copy/
+.env
+.env.*
+!.env.example
