@@ -1,7 +1,11 @@
 import dotenv from 'dotenv'
 import { DataSource } from 'typeorm'
 
-import { Organization } from '../organizations/organization.entity.js'
+import { User } from '../users/user.entity.js'
+import { Company } from '../companies/company.entity.js'
+import { Invitation } from '../invitations/invitation.entity.js'
+import { CompanyOnboardingRequest } from '../company_onboarding_requests/company-onboarding-request.entity.js'
+
 
 dotenv.config({ path: '../.env' })
 
@@ -15,8 +19,8 @@ export const AppDataSource = new DataSource({
   password: process.env.POSTGRES_PASSWORD,
   database: process.env.POSTGRES_DB,
 
-  entities: [Organization],
-  migrations: ['src/database/migrations/*.ts'],
+  entities: [Company, User, Invitation,CompanyOnboardingRequest],
 
+  migrations: ['src/database/migrations/*.ts'],
   synchronize: false,
 })
