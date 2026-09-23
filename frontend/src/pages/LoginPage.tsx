@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { login } from '../api/auth.api'
 
 interface LoginFormData {
   email: string
@@ -59,7 +60,15 @@ function LoginPage() {
     if (newErrors.email || newErrors.password) {
         return
     }
-    navigate('/dashboard')
+
+    try {
+      await login({email: formData.email, password: formData.password})
+      navigate('/dashboard')
+
+    }
+    catch (error) {
+       console.error(error)
+    }
   
   }
 
