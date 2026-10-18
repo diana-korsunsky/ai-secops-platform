@@ -8,6 +8,7 @@ import { CompanyOnboardingRequestModule } from './company_onboarding_requests/co
 import { InvitationModule } from './invitations/invitation.module.js'
 import { UsersModule } from './users/user.module.js'
 import { AuthModule } from './auth/auth.module.js'
+import { RedisModule } from './redis/redis.module.js'
 
 
 @Module({
@@ -37,7 +38,8 @@ import { AuthModule } from './auth/auth.module.js'
     CompanyOnboardingRequestModule,
     InvitationModule,
     UsersModule,
-    AuthModule
+    AuthModule,
+    RedisModule
   ],
 
   controllers: [AppController],
